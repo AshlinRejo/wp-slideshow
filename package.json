@@ -1,0 +1,36 @@
+{
+  "name": "wpcs-ashlinrejo",
+  "version": "1.0.0",
+  "description": "This is a Github [template repo](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-template-repository) with just a readme file that you are reading right now and a magical `.github` folder which contains [Github Actions](https://github.com/features/actions) that automatically check your code against [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/).",
+  "main": "index.js",
+  "scripts": {
+    "lint:php": "vendor/bin/phpcs",
+    "lint:php:fix": "vendor/bin/phpcbf",
+    "lint": "eslint public/js/* admin/js/*",
+    "lint:fix": "eslint --fix public/js/* admin/js/*",
+    "lint-css": "stylelint 'public/css/*' 'admin/css/*'",
+    "lint-css:fix": "npm run lint-css -- --fix",
+    "precommit": "npm run lint:php && npm run lint-css:fix && npm run lint:fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtlearn/wpcs-AshlinRejo.git"
+  },
+  "keywords": [
+    "WordPress",
+    "Slideshow"
+  ],
+  "author": "ashlinrejo1@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rtlearn/wpcs-AshlinRejo/issues"
+  },
+  "homepage": "https://github.com/rtlearn/wpcs-AshlinRejo#readme",
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^14.11.0",
+    "@wordpress/stylelint-config": "^21.21.0",
+    "eslint": "^8.46.0",
+    "stylelint": "^15.10.2"
+  },
+  "dependencies": {}
+}

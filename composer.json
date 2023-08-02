@@ -1,0 +1,12 @@
+{
+    "name": "wpcs-ashlin-rejo/ashlin-slideshow",
+    "authors": [
+        {
+            "name": "Ashlin Rejo",
+            "email": "ashlinrejo1@gmail.com"
+        }
+    ],
+    "require": {
+        "wp-coding-standards/wpcs": "^2.3"
+    }
+}
