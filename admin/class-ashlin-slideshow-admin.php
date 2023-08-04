@@ -96,8 +96,42 @@ class Ashlin_Slideshow_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ashlin-slideshow-admin.js', array( 'jquery' ), $this->version, false );
+        // For handle wp media
+        wp_enqueue_media();
+        wp_enqueue_script( $this->plugin_name . '-jquery-ui', plugin_dir_url( __FILE__ ) . 'lib/js/jquery-ui.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ashlin-slideshow-admin.js', array( 'jquery', $this->plugin_name . '-jquery-ui' ), $this->version, false );
+        wp_enqueue_script($this->plugin_name);
+        wp_localize_script(
+            $this->plugin_name, 'ashlinSlideshow', array(
+                'nonce' => wp_create_nonce( 'ashlin-slideshow-ajax-nonce' ),
+                'delete_text' => esc_html__('Delete', 'ashlin-slideshow'),
+            )
+        );
+    }
 
-	}
+    /**
+     * For add a menu under settings.
+     *
+     * @since    1.0.0
+     */
+    public function add_options_page_under_settings() {
 
+        add_options_page(
+            __( 'Customize Slideshow', 'ashlin-slideshow' ),
+            __( 'Ashlin Slideshow Settings', 'ashlin-slideshow' ),
+            'manage_options',
+            $this->plugin_name,
+            array( $this, 'display_options_page_section' )
+        );
+
+    }
+
+    /**
+     * To display the Slideshow options.
+     *
+     * @since    1.0.0
+     */
+    public function display_options_page_section() {
+        include_once 'partials/ashlin-slideshow-admin-display.php';
+    }
 }

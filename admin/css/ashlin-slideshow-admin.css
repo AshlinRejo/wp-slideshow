@@ -1,4 +1,23 @@
 /**
- * All of the CSS for your admin-specific functionality should be
+ * All of the CSS for admin-specific functionality is
  * included in this file.
  */
+
+.as-image {
+	display: inline-block;
+	max-width: 150px;
+	overflow: hidden;
+	padding: 10px;
+	border: 1px solid #ddd;
+	margin: 10px;
+}
+
+.as-image img {
+	max-width: 100%;
+	cursor: move;
+}
+
+a.as-delete {
+	float: right;
+	color: #a52a2a;
+}
