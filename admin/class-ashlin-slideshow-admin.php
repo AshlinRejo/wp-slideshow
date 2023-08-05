@@ -104,6 +104,8 @@ class Ashlin_Slideshow_Admin {
             $this->plugin_name, 'ashlinSlideshow', array(
                 'nonce' => wp_create_nonce( 'ashlin-slideshow-ajax-nonce' ),
                 'delete_text' => esc_html__('Delete', 'ashlin-slideshow'),
+                'wp_media_title' => esc_html__('Select or upload image to slideshow', 'ashlin-slideshow'),
+                'wp_media_button_text' => esc_html__('Add to slideshow', 'ashlin-slideshow'),
             )
         );
     }

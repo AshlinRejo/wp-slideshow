@@ -21,9 +21,9 @@
 
 			// Create a new media frame
 			slideshowFrame = wp.media( {
-				title: 'Select or Upload Media Of Your Chosen Persuasion',
+				title: ashlinSlideshow.wp_media_title,
 				button: {
-					text: 'Use this media',
+					text: ashlinSlideshow.wp_media_button_text,
 				},
 				multiple: true, // Set to true to allow multiple files to be selected
 			} );

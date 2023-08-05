@@ -16,7 +16,7 @@
 <div class="wrap" id="as-container">
     <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
     <p>
-        <button type="buttton" id="as-add-images-btn" class="button"><?php esc_html_e('Add/Choose images', 'ashlin-slideshow'); ?></button>
+        <button type="buttton" id="as-add-images-btn" class="button"><?php esc_html_e('Select or upload images', 'ashlin-slideshow'); ?></button>
     </p>
     <p>
         <ul class="as-images ui-sortable">
