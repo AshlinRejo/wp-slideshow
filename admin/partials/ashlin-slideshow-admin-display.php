@@ -20,9 +20,26 @@
     </p>
     <p>
         <ul class="as-images ui-sortable">
+        <?php
+        if (!empty($slideshow_images)) {
+            foreach ($slideshow_images as $image_id) {
+                $fullsize_url = wp_get_attachment_url( $image_id );
+                ?>
+                <li class="as-image" data-attachment_id="<?php echo esc_attr($image_id); ?>">
+                    <img src="<?php echo esc_url($fullsize_url); ?>">
+                    <ul class="as-actions">
+                        <li>
+                            <a href="#" class="as-delete" title="<?php esc_attr_e('Delete', 'ashlin-slideshow'); ?>"><?php esc_attr_e('Delete', 'ashlin-slideshow'); ?></a>
+                        </li>
+                    </ul>
+                </li>
+        <?php
+            }
+        }
+        ?>
         </ul>
     </p>
-    <input type="hidden" id="slideshow-images-ids" name="slideshow-images-ids" value="" />
+    <input type="hidden" id="slideshow-images-ids" name="slideshow-images-ids" value="<?php echo esc_attr(implode(',', $slideshow_images )); ?>" />
     <p class="as-publish-block">
         <button type="buttton" id="as-publish-slideshow-btn" class="button button-primary"><?php esc_html_e('Publish', 'ashlin-slideshow'); ?></button>
     </p>
