@@ -21,3 +21,7 @@ a.as-delete {
 	float: right;
 	color: #a52a2a;
 }
+
+.as-publish-block {
+	display: none;
+}
