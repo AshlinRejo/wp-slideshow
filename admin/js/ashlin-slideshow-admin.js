@@ -1,13 +1,13 @@
 ( function( $ ) {
 	'use strict';
+	/* global ashlinSlideshow */
 
 	$( function() {
 		let slideshowFrame;
 		const container 		= $( '#as-container' ), // Container id
 			addImageButton 		= container.find( '#as-add-images-btn' ), // Add images button
 			slideshowImages 	= container.find( 'ul.as-images' ), // Images ul block
-			slideshowImagesIds 	= $( '#slideshow-images-ids' ), // Images id hidden field
-			ashlinSlideshow = ashlinSlideshow || {};
+			slideshowImagesIds 	= $( '#slideshow-images-ids' ); // Images id hidden field
 
 		// Add images
 		addImageButton.on( 'click', function( event ) {

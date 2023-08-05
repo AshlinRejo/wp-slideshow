@@ -100,7 +100,6 @@ class Ashlin_Slideshow_Admin {
         wp_enqueue_media();
         wp_enqueue_script( $this->plugin_name . '-jquery-ui', plugin_dir_url( __FILE__ ) . 'lib/js/jquery-ui.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ashlin-slideshow-admin.js', array( 'jquery', $this->plugin_name . '-jquery-ui' ), $this->version, false );
-        wp_enqueue_script($this->plugin_name);
         wp_localize_script(
             $this->plugin_name, 'ashlinSlideshow', array(
                 'nonce' => wp_create_nonce( 'ashlin-slideshow-ajax-nonce' ),
