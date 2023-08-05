@@ -10,7 +10,7 @@
     "lint:fix": "eslint --fix public/js/* admin/js/*",
     "lint-css": "stylelint 'public/css/*' 'admin/css/*'",
     "lint-css:fix": "npm run lint-css -- --fix",
-    "precommit": "npm run lint:php && npm run lint-css:fix && npm run lint:fix"
+    "precommit": "npm run lint:php:fix && npm run lint-css:fix && npm run lint:fix"
   },
   "repository": {
     "type": "git",
