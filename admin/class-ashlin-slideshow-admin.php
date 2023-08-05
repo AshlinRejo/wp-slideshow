@@ -40,6 +40,15 @@ class Ashlin_Slideshow_Admin {
 	 */
 	private $version;
 
+    /**
+     * The version of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $version    Slideshow option key name.
+     */
+    private $option_key_name = 'ashlin_slideshow_image_ids';
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -48,10 +57,8 @@ class Ashlin_Slideshow_Admin {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -102,10 +109,11 @@ class Ashlin_Slideshow_Admin {
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ashlin-slideshow-admin.js', array( 'jquery', $this->plugin_name . '-jquery-ui' ), $this->version, false );
         wp_localize_script(
             $this->plugin_name, 'ashlinSlideshow', array(
-                'nonce' => wp_create_nonce( 'ashlin-slideshow-ajax-nonce' ),
-                'delete_text' => esc_html__('Delete', 'ashlin-slideshow'),
-                'wp_media_title' => esc_html__('Select or upload image to slideshow', 'ashlin-slideshow'),
-                'wp_media_button_text' => esc_html__('Add to slideshow', 'ashlin-slideshow'),
+                'nonce'                 => wp_create_nonce( 'ashlin-slideshow-ajax-nonce' ),
+                'delete_text'           => esc_html__('Delete', 'ashlin-slideshow'),
+                'wp_media_title'        => esc_html__('Select or upload image to slideshow', 'ashlin-slideshow'),
+                'wp_media_button_text'  => esc_html__('Add to slideshow', 'ashlin-slideshow'),
+                'failed_message'        => esc_html__('Failed to update.', 'ashlin-slideshow'),
             )
         );
     }
@@ -116,7 +124,6 @@ class Ashlin_Slideshow_Admin {
      * @since    1.0.0
      */
     public function add_options_page_under_settings() {
-
         add_options_page(
             __( 'Customize Slideshow', 'ashlin-slideshow' ),
             __( 'Ashlin Slideshow Settings', 'ashlin-slideshow' ),
@@ -124,7 +131,6 @@ class Ashlin_Slideshow_Admin {
             $this->plugin_name,
             array( $this, 'display_options_page_section' )
         );
-
     }
 
     /**
@@ -134,5 +140,55 @@ class Ashlin_Slideshow_Admin {
      */
     public function display_options_page_section() {
         include_once 'partials/ashlin-slideshow-admin-display.php';
+    }
+
+    /**
+     * Update slideshow images.
+     *
+     * @since    1.0.0
+     */
+    public function ajax_update_slideshow() {
+        // Check user access.
+        if (!current_user_can('manage_options')) {
+            wp_die( esc_html__('Invalid access', 'ashlin-slideshow'), 403 );
+        }
+
+        // Verify nonce.
+        check_ajax_referer( 'ashlin-slideshow-ajax-nonce','nonce' );
+
+        // Sanitize the post values
+        $image_ids          = sanitize_text_field($_POST['images']);
+        $image_ids_array    = explode(',', $image_ids);
+        $image_ids_array    = array_filter($image_ids_array); // To remove empty and 0 values
+
+        // Validate image ids
+        $validation_result  = $this->validate_image_ids($image_ids_array);
+        if (true === $validation_result) {
+            update_option( $this->option_key_name, $image_ids_array );
+            $return_data    = array('message' => esc_html__('Updated successfully.', 'ashlin-slideshow'));
+            wp_send_json_success($return_data);
+        } else {
+            $return_data    = array('message' => esc_html__('Validation failed: Invalid image id(s).', 'ashlin-slideshow'));
+            wp_send_json_error($return_data);
+        }
+    }
+
+    /**
+     * Validate Image ids
+     *
+     * @since   1.0.0
+     *
+     * @param   array $image_ids
+     * @return  boolean
+     */
+    private function validate_image_ids( $image_ids) {
+        foreach ( $image_ids as $image_id ) {
+            $result = intval( $image_id ) ? true : false;
+
+            if ( false === $result ) {
+                return false;
+            }
+        }
+        return true;
     }
 }

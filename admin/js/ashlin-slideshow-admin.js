@@ -117,6 +117,60 @@
 			}
 		}
 		ashlinSlideshowUpdatePublishBlock();
+
+		// For store image ids
+		$( '#as-publish-slideshow-btn' ).on( 'click', function( event ) {
+			event.preventDefault();
+			const button = $( this );
+
+			button.attr( 'disabled', 'disabled' ); //Disable button while processing ajax call
+			// Remove existing messages if exits
+			$( '#as-container .notice' ).remove();
+
+			const imageIds = slideshowImagesIds.val();
+			const data = {
+				images: imageIds,
+				nonce: ashlinSlideshow.nonce,
+				action: 'as_update_slideshow',
+			};
+
+			//Process ajax call to store image ids
+			$.post( wp.ajax.settings.url, data ).done( function( response ) {
+				if ( true === response.success ) {
+					ashlinSlideshowDisplaySuccessMessage( response.data.message );
+				} else {
+					ashlinSlideshowDisplayFailureMessage( response.data.message );
+				}
+			} ).fail( function() {
+				ashlinSlideshowDisplayFailureMessage( ashlinSlideshow.failed_message );
+			} ).always( function() {
+				button.removeAttr( 'disabled' );
+			} );
+		} );
+
+		/**
+		 * For displaying success message
+		 *
+		 * @param {string} message Success message to display
+		 */
+		function ashlinSlideshowDisplaySuccessMessage( message ) {
+			$( '#as-container > h1' ).after( `
+				<div id="success-message" class="notice notice-success">
+					<p>${ message }</p>
+				</div>` );
+		}
+
+		/**
+		 * For displaying failed message
+		 *
+		 * @param {string} message Failure message to display
+		 */
+		function ashlinSlideshowDisplayFailureMessage( message ) {
+			$( '#as-container > h1' ).after( `
+				<div id="error-message" class="notice notice-error">
+					<p>${ message }</p>
+				</div>` );
+		}
 	} );
 
 }( jQuery ) );
