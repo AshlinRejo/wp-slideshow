@@ -139,7 +139,7 @@ class Ashlin_Slideshow_Admin {
      * @since    1.0.0
      */
     public function display_options_page_section() {
-        $slideshow_images = get_option( $this->option_key_name );
+        $slideshow_images = get_option( $this->option_key_name, array() );
         include_once 'partials/ashlin-slideshow-admin-display.php';
     }
 
