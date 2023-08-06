@@ -174,7 +174,7 @@ class Ashlin_Slideshow {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+        $this->loader->add_shortcode( 'ashlin_slideshow', $plugin_public, 'display_image_slideshow' );
 	}
 
 	/**

@@ -40,6 +40,15 @@ class Ashlin_Slideshow_Public {
 	 */
 	private $version;
 
+    /**
+     * Option key name which contains image ids.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $option_key_name    Slideshow option key name.
+     */
+    private $option_key_name = 'ashlin_slideshow_image_ids';
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -96,8 +105,19 @@ class Ashlin_Slideshow_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ashlin-slideshow-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name . '-flickity', plugin_dir_url( __FILE__ ) . 'lib/js/flickity.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ashlin-slideshow-public.js', array( 'jquery', $this->plugin_name . '-flickity' ), $this->version, false );
 
 	}
+
+    /**
+     * Display slideshow on front-end.
+     *
+     * @since    1.0.0
+     */
+    public function display_image_slideshow() {
+        $slideshow_images = get_option( $this->option_key_name, array() );
+        include_once 'partials/ashlin-slideshow-public-display.php';
+    }
 
 }

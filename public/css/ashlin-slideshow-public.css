@@ -2,3 +2,54 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.as-slideshow {
+	width: 80%;
+	max-width: 900px;
+	height: 500px;
+	background-color: #000;
+	margin: 20px auto;
+	position: relative;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+	border-radius: 4px;
+}
+
+.slides-box .slide img {
+	display: table;
+	width: 100%;
+}
+
+.slideshow-buttons {
+	color: #000;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.slideshow-buttons div {
+	color: #fff;
+	display: inline-block;
+	font-size: 2em;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.slideshow-buttons .next-btn {
+	margin-left: 4%;
+	transition: all ease-in-out 0.3s;
+	text-shadow: 1px 1px 2px #000;
+}
+
+.slideshow-buttons .next-btn:hover {
+	transform: translateX(4px);
+}
+
+.slideshow-buttons .prev-btn {
+	transition: all ease-in-out 0.3s;
+	text-shadow: 1px 1px 2px #000;
+}
+
+.slideshow-buttons .prev-btn:hover {
+	transform: translateX(-4px);
+}

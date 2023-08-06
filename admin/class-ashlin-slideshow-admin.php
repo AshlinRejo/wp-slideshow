@@ -41,11 +41,11 @@ class Ashlin_Slideshow_Admin {
 	private $version;
 
     /**
-     * The version of this plugin.
+     * Option key name which contains image ids.
      *
      * @since    1.0.0
      * @access   private
-     * @var      string    $version    Slideshow option key name.
+     * @var      string    $option_key_name    Slideshow option key name.
      */
     private $option_key_name = 'ashlin_slideshow_image_ids';
 
