@@ -8,7 +8,7 @@
 			addImageButton 		= container.find( '#as-add-images-btn' ), // Add images button
 			slideshowImages 	= container.find( 'ul.as-images' ), // Images ul block
 			slideshowImagesIds 	= $( '#slideshow-images-ids' ); // Images id hidden field
-
+		let oldImageIds = slideshowImagesIds.val();
 		// Add images
 		addImageButton.on( 'click', function( event ) {
 			event.preventDefault();
@@ -110,7 +110,7 @@
 			let imageIds = slideshowImagesIds.val();
 			imageIds = imageIds.replace( /,*$/, '' ); // Remove last , from the string
 			imageIds = $.trim( imageIds );// Remove empty spaces
-			if ( '' !== imageIds ) {
+			if ( '' !== imageIds || oldImageIds !== imageIds ) {
 				$( '.as-publish-block' ).show();
 			} else {
 				$( '.as-publish-block' ).hide();
@@ -138,6 +138,9 @@
 			$.post( wp.ajax.settings.url, data ).done( function( response ) {
 				if ( true === response.success ) {
 					ashlinSlideshowDisplaySuccessMessage( response.data.message );
+					// For update publish button after save to DB. Remove button when all item is removed.
+					oldImageIds = imageIds;
+					ashlinSlideshowUpdatePublishBlock();
 				} else {
 					ashlinSlideshowDisplayFailureMessage( response.data.message );
 				}
