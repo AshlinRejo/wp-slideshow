@@ -6,7 +6,9 @@
             "email": "ashlinrejo1@gmail.com"
         }
     ],
-    "require": {
-        "wp-coding-standards/wpcs": "^2.3"
+    "require-dev": {
+        "phpunit/phpunit": "^10.3",
+        "wp-coding-standards/wpcs": "^2.3",
+        "yoast/phpunit-polyfills": "^2.0"
     }
 }
