@@ -1,0 +1,8 @@
+{
+  "extends": "@wordpress/stylelint-config",
+  "ignoreFiles": "",
+  "rules": {
+    "indentation": "tab",
+    "number-leading-zero": null
+  }
+}
