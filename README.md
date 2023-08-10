@@ -8,7 +8,7 @@ Ashlin Slideshow creates an admin-side menu **Settings** -> **Ashlin Slideshow S
 
 Screenshot: [https://nimb.ws/myiBZt](https://nimb.ws/myiBZt)
 
-## Font-end
+## Front-end
 
 By Adding the shortcode `[ashlin_slideshow]` to any post or pages, it will replace the shortcode by a slideshow of images uploaded in admin-side.
 
