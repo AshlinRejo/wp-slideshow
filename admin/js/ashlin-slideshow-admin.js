@@ -107,7 +107,7 @@
 		 * Enable / Disable publish block based on id exists
 		 */
 		function ashlinSlideshowUpdatePublishBlock() {
-			if( slideshowImagesIds.length > 0 ){
+			if ( 0 < slideshowImagesIds.length ) {
 				let imageIds = slideshowImagesIds.val();
 				imageIds = imageIds.replace( /,*$/, '' ); // Remove last , from the string
 				imageIds = $.trim( imageIds );// Remove empty spaces

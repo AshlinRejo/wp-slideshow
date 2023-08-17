@@ -116,7 +116,7 @@ class Ashlin_Slideshow_Public {
      * @since    1.0.0
      */
     public function display_image_slideshow() {
-        if( !is_admin() ){
+        if ( !is_admin() ) {
             ob_start();
             $slideshow_images = get_option( $this->option_key_name, array() );
             include_once 'partials/ashlin-slideshow-public-display.php';
