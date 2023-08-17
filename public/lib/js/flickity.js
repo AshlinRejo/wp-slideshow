@@ -26,7 +26,7 @@
             $next = $slideshow.find('.' + params.nextBtn + ''),
             $prev = $slideshow.find('.' + params.prevBtn + ''),
             $itemsBox = $slideshow.find('.' + params.slidesBox + ''),
-            $items = $itemsBox.find('>div'),
+            $items = $itemsBox.find('>span'),
             $title = $slideshow.find('.title'),
 
             // DIMENSIONS
@@ -37,7 +37,7 @@
 
         // STYLES
         $slideshow.css('overflow', 'hidden');
-        $itemsBox.find('>div:last-child').prependTo($itemsBox);
+        $itemsBox.find('>span:last-child').prependTo($itemsBox);
         $itemsBox.css({
             'height': '100%',
             'position': 'relative'
@@ -75,7 +75,7 @@
                 }, params.slideSpeed, function () {
 
                     var $this = $(this);
-                    $this.find('>div:first-child').appendTo($this);
+                    $this.find('>span:first-child').appendTo($this);
                     $title.fadeIn(150);
                     $title.css('color', 'black');
                     $this.css('margin-left', 0);
@@ -98,7 +98,7 @@
                 }, params.noDelay, function () {
 
                     var $this = $(this);
-                    $this.find('>div:first-child').appendTo($this);
+                    $this.find('>span:first-child').appendTo($this);
                     $title.fadeIn(400);
                     $itemsBox.animate({
                         opacity: 1
@@ -117,7 +117,7 @@
                 }, params.noDelay, function () {
 
                     var $this = $(this);
-                    $this.find('>div:first-child').appendTo($this);
+                    $this.find('>span:first-child').appendTo($this);
                     $this.css('margin-left', 0);
 
                 });
@@ -135,7 +135,7 @@
                     'margin-left': '-=' + $slideshowWidth * 2
                 }, params.titleSpeed, function () {
                     var $this = $(this);
-                    $this.find('>div:last-child').prependTo($this);
+                    $this.find('>span:last-child').prependTo($this);
                     $title.css('color', 'black');
                     $this.css('margin-left', 0);
                 });
@@ -144,7 +144,7 @@
                     'margin-left': '+=' + $slideshowWidth
                 }, params.slideSpeed, function () {
                     var $this = $(this);
-                    $this.find('>div:last-child').prependTo($this);
+                    $this.find('>span:last-child').prependTo($this);
                     $this.css('margin-left', 0);
                 });
             }
@@ -162,7 +162,7 @@
                 }, params.noDelay, function () {
 
                     var $this = $(this);
-                    $this.find('>div:last-child').prependTo($this);
+                    $this.find('>span:last-child').prependTo($this);
                     $title.fadeIn(400);
                     $itemsBox.animate({
                         opacity: 1
@@ -181,7 +181,7 @@
                 }, params.noDelay, function () {
 
                     var $this = $(this);
-                    $this.find('>div:last-child').prependTo($this);
+                    $this.find('>span:last-child').prependTo($this);
                     $this.css('margin-left', 0);
 
                 });

@@ -14,25 +14,22 @@
 
 if (!empty($slideshow_images)) {
 ?>
-    <div>
-        <div class="as-slideshow">
-
-            <div class="slides-box">
+        <span class="as-slideshow">
+            <span class="slides-box">
                 <?php
                 foreach ($slideshow_images as $image_id) {
                     $fullsize_url = wp_get_attachment_url( $image_id );
                     ?>
-                    <div class="slide">
+                    <span class="slide">
                         <img src="<?php echo esc_url($fullsize_url); ?>" alt="image" title="image">
-                    </div>
+                    </span>
                     <?php
                 }
                 ?>
-            </div>
-            <div class="slideshow-buttons">
-                <div class="prev-btn">&larr;</div>
-                <div class="next-btn">&rarr;</div>
-            </div>
-        </div>
-    </div>
+            </span>
+            <span class="slideshow-buttons">
+                <span class="prev-btn">&larr;</span>
+                <span class="next-btn">&rarr;</span>
+            </span>
+        </span>
 <?php } ?>

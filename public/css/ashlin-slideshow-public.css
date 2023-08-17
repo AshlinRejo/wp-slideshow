@@ -4,6 +4,7 @@
  */
 
 .as-slideshow {
+	display: inline-block;
 	width: 80%;
 	max-width: 900px;
 	height: 500px;
@@ -21,13 +22,14 @@
 
 .slideshow-buttons {
 	color: #000;
+	display: block;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	text-align: center;
 }
 
-.slideshow-buttons div {
+.slideshow-buttons span {
 	color: #fff;
 	display: inline-block;
 	font-size: 2em;

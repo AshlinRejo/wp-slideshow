@@ -116,8 +116,14 @@ class Ashlin_Slideshow_Public {
      * @since    1.0.0
      */
     public function display_image_slideshow() {
-        $slideshow_images = get_option( $this->option_key_name, array() );
-        include_once 'partials/ashlin-slideshow-public-display.php';
+        if( !is_admin() ){
+            ob_start();
+            $slideshow_images = get_option( $this->option_key_name, array() );
+            include_once 'partials/ashlin-slideshow-public-display.php';
+            $return = ob_get_contents();
+            ob_end_clean();
+            return $return;
+        }
     }
 
 }
