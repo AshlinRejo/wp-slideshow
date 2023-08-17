@@ -107,13 +107,15 @@
 		 * Enable / Disable publish block based on id exists
 		 */
 		function ashlinSlideshowUpdatePublishBlock() {
-			let imageIds = slideshowImagesIds.val();
-			imageIds = imageIds.replace( /,*$/, '' ); // Remove last , from the string
-			imageIds = $.trim( imageIds );// Remove empty spaces
-			if ( '' !== imageIds || oldImageIds !== imageIds ) {
-				$( '.as-publish-block' ).show();
-			} else {
-				$( '.as-publish-block' ).hide();
+			if( slideshowImagesIds.length > 0 ){
+				let imageIds = slideshowImagesIds.val();
+				imageIds = imageIds.replace( /,*$/, '' ); // Remove last , from the string
+				imageIds = $.trim( imageIds );// Remove empty spaces
+				if ( '' !== imageIds || oldImageIds !== imageIds ) {
+					$( '.as-publish-block' ).show();
+				} else {
+					$( '.as-publish-block' ).hide();
+				}
 			}
 		}
 		ashlinSlideshowUpdatePublishBlock();
