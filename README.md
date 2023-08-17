@@ -22,7 +22,7 @@ Screenshot: [https://nimb.ws/MlejUz](https://nimb.ws/MlejUz)
 ## Installing the plugin
 
 1. Clone the directory into your plugins folder with below command.
-`git clone https://github.com/rtlearn/wpcs-AshlinRejo.git /PATH-TO-PLUGINS-FOLDER/ashlin-slideshow`
+`git clone https://github.com/rtlearn/wpcs-AshlinRejo.git /PATH-TO-PLUGINS-FOLDER/ashlin-slideshow` or download from https://github.com/rtlearn/wpcs-AshlinRejo/releases/download/1.0.0/ashlin-slideshow.zip 
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. Now you will find the menu **Settings** -> **Ashlin Slideshow Settings** in WordPress admin panel.
 
