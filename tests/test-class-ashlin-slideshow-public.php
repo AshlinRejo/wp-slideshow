@@ -19,7 +19,7 @@ class Ashlin_Slideshow_Public_Test extends WP_UnitTestCase {
 
         // Run shortcode
         ob_start();
-        do_shortcode( '[ashlin_slideshow]' );
+        echo do_shortcode( '[ashlin_slideshow]' );
         $output = ob_get_clean();
 
         /**
